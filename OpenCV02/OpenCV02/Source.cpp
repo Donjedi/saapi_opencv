@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
 	// Salvam valoarea intr-o variabila tip matrice
-	Mat image = imread("test.jpg");
+	Mat image = imread("test.png");
 	for (int i = 0; i < image.rows; i++)
 	{
 		for (int j = 0; j < image.cols; j++)
