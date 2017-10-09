@@ -1,7 +1,7 @@
 /*
-@ver	Used OpenCV version: 3.3.0;
-@desc	Afisam caracteristicile imaginii .bmp
-@author	Mihai-Traian Caragheorghiev <caragheorghiev.mihai@gmail.com>
+	@ver	Used OpenCV version: 3.3.0;
+	@desc	Afisam caracteristicile imaginii .bmp
+	@author	Mihai-Traian Caragheorghiev <caragheorghiev.mihai@gmail.com>
 */
 
 #include <opencv2\highgui.hpp>
@@ -37,7 +37,7 @@ int main()
 }
 
 /*
-	@Mat imagine primeste o imagine sub forma de matrice
+	@Mat  imagine primeste o imagine sub forma de matrice
 	@desc Functia se ocupa cu afisatul detaliilor valorilor pixelilor din imagine
 */
 void afisareDetaliiPixeli(Mat imagine)
@@ -58,10 +58,13 @@ void afisareDetaliiPixeli(Mat imagine)
 	}
 }
 
+/*
+	@Mat  imagine primeste o imagine sub forma de matrice
+	@desc Redimensionarea imaginii pentru a putea fi vizualizata si analizata
+*/
 void afisareImagineRedimensionata(Mat imagine)
 {
 	Mat output;
-	// Redimensionarea imaginii pentru a putea fi vizualizata si analizata
 	resize(imagine, output, Size(), 32, 32, CV_INTER_AREA);
 	imshow("Image", output);
 }
