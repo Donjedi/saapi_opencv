@@ -1,6 +1,6 @@
 /*
 	@ver	Used OpenCV version: 3.3.0;
-	@desc	Afisam caracteristicile imaginii .bmp
+	@desc	Modificam valorile pixelilor imaginii .bmp cu valori aleatorii
 	@author	Mihai-Traian Caragheorghiev <caragheorghiev.mihai@gmail.com>
 */
 
