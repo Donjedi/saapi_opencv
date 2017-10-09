@@ -3,6 +3,7 @@
 	@desc	Afisam valoarea fiecarui pixel din imagine
 	@author	Mihai-Traian Caragheorghiev <caragheorghiev.mihai@gmail.com>
 */
+
 #include <opencv2\highgui\highgui.hpp>
 #include <iostream>
 
