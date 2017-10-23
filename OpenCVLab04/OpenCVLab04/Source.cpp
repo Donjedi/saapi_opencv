@@ -5,7 +5,6 @@
 */
 
 #include <iostream>
-#include <opencv2\core.hpp>
 #include <opencv2\highgui\highgui.hpp>
 #include <opencv2\imgproc\imgproc.hpp>
 
@@ -13,9 +12,10 @@ using namespace std;
 using namespace cv;
 
 /*
-	
+	@string const& name Variabila ce primeste numele ferestrei pentru afisarea Histogramei
+	@Mat1b const& image	Variabila ce primeste imaginea pentru care se face histograma(numai grayscale)
 */
-void arataHistograma(std::string const& name, cv::Mat1b const& image)
+void arataHistograma(std::string const& name, Mat1b const& image)
 {
 	// Setare numar maxim de intervale din histograma
 	int bins = 256;
@@ -33,8 +33,8 @@ void arataHistograma(std::string const& name, cv::Mat1b const& image)
 	int const hist_height = 256;
 	Mat3b hist_image = Mat3b::zeros(hist_height, bins);
 
+	// Functie pentru calcularea Histogramei
 	calcHist(&image, 1, channels, Mat(), hist, 1, histSize, ranges, true, false);
-
 	double max_val = 0;
 	minMaxLoc(hist, 0, &max_val);
 
@@ -54,11 +54,11 @@ void arataHistograma(std::string const& name, cv::Mat1b const& image)
 int main()
 {
 	// Incarcare imagine
-	Mat3b const imagine = imread("test.jpg", cv::IMREAD_COLOR);
+	Mat3b const imagine = imread("test.jpg", IMREAD_COLOR);
 	
 	// Transformare imagine in spectrul gri
 	Mat1b imgGri;
-	cvtColor(imagine, imgGri, cv::COLOR_BGR2GRAY);
+	cvtColor(imagine, imgGri, COLOR_BGR2GRAY);
 	
 	// Afisare imagine initiala
 	imshow("Imagine", imagine);
