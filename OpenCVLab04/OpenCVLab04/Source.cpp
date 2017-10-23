@@ -12,6 +12,9 @@
 using namespace std;
 using namespace cv;
 
+/*
+	
+*/
 void arataHistograma(std::string const& name, cv::Mat1b const& image)
 {
 	// Setare numar maxim de intervale din histograma
@@ -22,11 +25,11 @@ void arataHistograma(std::string const& name, cv::Mat1b const& image)
 	float lranges[] = { 0, 256 };
 	const float* ranges[] = { lranges };
 
-	// creare matrice pentru histograma
+	// Creare matrice pentru histograma
 	Mat hist;
 	int channels[] = { 0 };
 
-	// creare matrice pentru vizualizare histograma
+	// Creare matrice pentru vizualizare histograma
 	int const hist_height = 256;
 	Mat3b hist_image = Mat3b::zeros(hist_height, bins);
 
@@ -51,7 +54,7 @@ void arataHistograma(std::string const& name, cv::Mat1b const& image)
 int main()
 {
 	// Incarcare imagine
-	Mat3b const imagine = cv::imread("test.jpg", cv::IMREAD_COLOR);
+	Mat3b const imagine = imread("test.jpg", cv::IMREAD_COLOR);
 	
 	// Transformare imagine in spectrul gri
 	Mat1b imgGri;
@@ -74,7 +77,7 @@ int main()
 	
 	// Afisam noua imagine in functie de histograma egalizata
 	imshow("Img Histograma", egalizareHistograma);
-	arataHistograma("Histograma", egalizareHistograma);
+	arataHistograma("HistogramaEgaliata", egalizareHistograma);
 	waitKey();
 
 	return 0;
