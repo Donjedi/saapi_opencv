@@ -4,6 +4,7 @@
 #include <opencv2/objdetect.hpp>
 #include <opencv2/imgproc.hpp>
 #include <iostream>
+#include <windows.h>
 
 using namespace cv;
 using namespace std;
@@ -11,58 +12,43 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	// capture from web camera init
-
 	VideoCapture cap(0);
 	cap.open(0);
 
 	Mat img;
-
-	// Initialize the inbuilt Harr Cascade frontal face detection
-	// Below mention the path of where your haarcascade_frontalface_alt2.xml file is located
-
 	CascadeClassifier face_cascade;
-	face_cascade.load("haarcascade_frontalface_alt2.xml");
+	face_cascade.load("haarcascade_frontalface_alt2.xml"); // xml predefinit OpenCV
 
-
-	for (;;)
+	bool loop = true;
+	while (loop)
 	{
-
-		// Image from camera to Mat
-
+		// Transformare imagini flux video catre mat
 		cap >> img;
-
-		// obtain input image from source
 		cap.retrieve(img, CV_CAP_OPENNI_BGR_IMAGE);
-
-		// Just resize input image if you want
 		resize(img, img, Size(1000, 640));
-
-		// Container of faces
+		// dreptunghi fata
 		vector<Rect> faces;
-
-
-		// Detect faces
+		// Detectare fete
 		face_cascade.detectMultiScale(img, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(140, 140));
-
-
-		//Show the results
-		// Draw circles on the detected faces
-
+		// Afisare rezultat
+		// Deseneaza cercuri pe fete
 		for (int i = 0; i < faces.size(); i++)
 		{
 			Point center(faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5);
 			ellipse(img, center, Size(faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
 		}
 
-		// To draw rectangles around detected faces
+		// Desenare dreptunghi in jurul capului
 		 for (unsigned i = 0; i<faces.size(); i++)
 		rectangle(img,faces[i], Scalar(255, 0, 0), 2, 1);
 
+		imshow("Recunoastere Faciala", img);
+		int key2 = waitKey(16); // pentru a avea 60 fps (1/60fps)* 1000
 
-		imshow("wooohooo", img);
-		int key2 = waitKey(20);
-
+		if (GetKeyState(VK_RETURN))
+		{
+			loop = false;
+		}
 	}
 	return 0;
 }
