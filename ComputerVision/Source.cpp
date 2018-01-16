@@ -21,8 +21,8 @@ int main(int argc, char** argv)
 	// Initialize the inbuilt Harr Cascade frontal face detection
 	// Below mention the path of where your haarcascade_frontalface_alt2.xml file is located
 
-	/*CascadeClassifier face_cascade;
-	face_cascade.load("/home/dell/OpenCV_Installed/opencv-3.1.0/data/haarcascades/haarcascade_frontalface_alt2.xml");*/
+	CascadeClassifier face_cascade;
+	face_cascade.load("haarcascade_frontalface_alt2.xml");
 
 
 	for (;;)
@@ -43,21 +43,21 @@ int main(int argc, char** argv)
 
 
 		// Detect faces
-		/*face_cascade.detectMultiScale(img, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(140, 140));*/
+		face_cascade.detectMultiScale(img, faces, 1.1, 2, 0 | CV_HAAR_SCALE_IMAGE, Size(140, 140));
 
 
 		//Show the results
 		// Draw circles on the detected faces
 
-		/*for (int i = 0; i < faces.size(); i++)
+		for (int i = 0; i < faces.size(); i++)
 		{
 			Point center(faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5);
 			ellipse(img, center, Size(faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
-		}*/
+		}
 
 		// To draw rectangles around detected faces
-		/* for (unsigned i = 0; i<faces.size(); i++)
-		rectangle(img,faces[i], Scalar(255, 0, 0), 2, 1);*/
+		 for (unsigned i = 0; i<faces.size(); i++)
+		rectangle(img,faces[i], Scalar(255, 0, 0), 2, 1);
 
 
 		imshow("wooohooo", img);
